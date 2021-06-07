@@ -1,0 +1,20 @@
+@import "~bootstrap/dist/css/bootstrap.min.css";
+
+@import "~ngx-toastr/toastr";
+
+*,
+*::after,
+*::before {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body,html {
+ 
+  background-repeat: no-repeat;
+   background:linear-gradient(rgba(14, 13, 13, 0.5), rgba(19, 18, 18, 0.5)),url('https://c1.wallpaperflare.com/preview/317/1020/1006/wood-paper-box-pen-pens-on-the-table.jpg');
+  background-size: cover;
+  
+}
+

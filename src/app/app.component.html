@@ -1,0 +1,58 @@
+<!-- Font Awesome -->
+<link
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+  rel="stylesheet"
+/>
+<!-- Google Fonts -->
+<link
+  href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+  rel="stylesheet"
+/>
+<!-- MDB -->
+<link
+  href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.5.0/mdb.min.css"
+  rel="stylesheet"
+/>
+<!-- MDB -->
+<script
+  type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.5.0/mdb.min.js"
+></script>
+
+
+<div class="container">
+  <h1 class="display-2" style="text-align: center;">{{title}}</h1>
+  <div class="row justify-content-center align-items-center">
+    <div class="col-lg-6">
+      <!--enter name-->
+      <div *ngIf="!start" class="row" style="margin-top: 8rem;">
+        <div class="col-6"><input #playerone="ngModel" [(ngModel)]="player1" class="form-control form-control-lg text-uppercase" type="text" placeholder="Player1" required [class.is-invalid]="playerone.invalid&&playerone.touched"></div>
+        <div class="col-6"><input #playertwo="ngModel" [(ngModel)]="player2" class="form-control form-control-lg text-uppercase" type="text" placeholder="Player2" required [class.is-invalid]="playertwo.invalid&&playertwo.touched"></div>
+        <div class="row mt-5" style="justify-content: center;">
+          <button (click)="StartGame()" class="btn btn-success btn-lg" style="width: fit-content;height: fit-content;margin-top: 4rem;"[disabled]="playerone.invalid|| playertwo.invalid">Start Game</button></div>
+        </div>
+      <!--game starts-->
+      <div *ngIf="start">
+          <div *ngIf="!this.win">
+              <h6 [hidden]="isCross || (win||noWin=='yes')" class="alert alert-primary">Hey {{player1.toUpperCase()+" ! "}}its your turn</h6>
+              <h6 [hidden]="!isCross||(win||noWin=='yes')"class="alert alert-info">Hey {{player2.toUpperCase()+" ! "}} its your turn</h6>
+          </div>
+        <div class="grid mb-4">
+          <div *ngFor="let item of itemArray;index as i">
+            <div class="card">
+                <div class="card-box box"(click)="handleClick(i)">
+                  <app-icon [iconName]="item"></app-icon>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-6 text-center mt-4" *ngIf="win || noWin=='yes'" style="color: snow;">
+      <div *ngIf="win" class="display-6">GAME OVER<br> {{win}}<i class="far fa-grin-beam" style="margin-left: 1rem;"></i></div>
+      <div *ngIf="noWin=='yes' && !win" class="display-6">GAME OVER <br>DRAW!</div>
+      <button (click)="Reload()" class="btn btn-danger btn-lg pl-5 pr-5 mt-3 mb-3">RESTART GAME <i class="fas fa-redo"></i></button>
+    </div>
+
+  </div>
+</div>

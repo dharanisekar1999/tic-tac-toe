@@ -1,0 +1,26 @@
+.alert
+{
+  width: fit-content;
+}
+.container,
+.row {
+  height: 80vh;
+}
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 15px;
+}
+
+.box {
+  width: auto;
+  height: 11rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color:whitesmoke;
+}
+
+h1 {
+  color: rgb(238, 229, 229);
+}
